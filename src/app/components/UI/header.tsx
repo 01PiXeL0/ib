@@ -79,9 +79,6 @@ export default function Header() {
         <NavbarContent justify="start" className="gap-3">
           <NavbarMenuToggle className="sm:hidden" aria-label={isMenuOpen ? "Закрыть меню" : "Открыть меню"} />
           <NavbarBrand className="gap-3">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 via-purple-500 to-cyan-400 text-lg font-bold text-white shadow-lg shadow-indigo-600/40">
-              DB
-            </div>
             <div className="flex flex-col leading-tight">
               <p className="text-lg font-semibold text-zinc-300">DEVBASICS</p>
               <span className="text-xs uppercase tracking-[0.25em] text-zinc-500">профиль + тест + чат</span>
