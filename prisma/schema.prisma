@@ -1,0 +1,53 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           Int           @id @default(autoincrement())
+  email        String        @unique
+  name         String?
+  passwordHash String
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  assessments  Assessment[]
+  chats        ChatSession[]
+}
+
+model Assessment {
+  id            Int       @id @default(autoincrement())
+  user          User?     @relation(fields: [userId], references: [id])
+  userId        Int?
+
+  areas         String[]
+  workFocus     String?
+  workStyle     String?
+  studyDepth    String?
+  values        Json?
+  skills        Json?
+  learningPlan  Json?
+  constraints   String?
+  freeText      String?
+  snapshot      Json?
+  createdAt     DateTime  @default(now())
+
+  chats         ChatSession[] @relation("AssessmentChats")
+}
+
+model ChatSession {
+  id            Int       @id @default(autoincrement())
+  user          User?     @relation(fields: [userId], references: [id])
+  userId        Int?
+
+  assessment     Assessment? @relation("AssessmentChats", fields: [assessmentId], references: [id])
+  assessmentId  Int?
+
+  transcript    Json?
+  summary       String?
+  createdAt     DateTime  @default(now())
+}
