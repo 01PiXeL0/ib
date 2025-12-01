@@ -81,7 +81,7 @@ export default function Header() {
           <NavbarBrand className="gap-3">
             <div className="flex flex-col leading-tight">
               <p className="text-lg font-semibold text-zinc-300">DEVBASICS</p>
-              <span className="text-xs uppercase tracking-[0.25em] text-zinc-500">профиль + тест + чат</span>
+            
             </div>
           </NavbarBrand>
         </NavbarContent>
