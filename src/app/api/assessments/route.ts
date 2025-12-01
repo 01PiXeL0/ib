@@ -1,5 +1,6 @@
 import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
+import { Prisma } from "@prisma/client";
 
 type AssessmentPayload = {
   userId?: number;
@@ -34,7 +35,7 @@ export async function POST(request: Request) {
         skills: body.motivations?.skills,
         learningPlan: body.motivations?.learningPlan,
         freeText: body.motivations?.freeText,
-        snapshot: body.featureSnapshot,
+        snapshot: body.featureSnapshot as Prisma.InputJsonValue,,
       },
       select: {
         id: true,
