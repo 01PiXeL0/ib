@@ -35,7 +35,9 @@ export async function POST(request: Request) {
         skills: body.motivations?.skills,
         learningPlan: body.motivations?.learningPlan,
         freeText: body.motivations?.freeText,
-        snapshot: body.featureSnapshot as Prisma.InputJsonValue,
+        snapshot: body.featureSnapshot
+  ? JSON.parse(JSON.stringify(body.featureSnapshot))
+  : undefined,
       },
       select: {
         id: true,
